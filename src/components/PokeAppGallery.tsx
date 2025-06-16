@@ -35,9 +35,29 @@ function PokeAppGallery() {
         ))}
       </Box>
       <div className='flex gap-4 mt-4 items-center justify-center'>
-        <Button onClick={prevPage}>Página anterior</Button>
+        <Button
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+            prevPage();
+          }}
+        >
+          Página anterior
+        </Button>
         <span>{currentPage + 1}</span>
-        <Button onClick={nextPage}>Próxima página</Button>
+        <Button
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+            nextPage();
+          }}
+        >
+          Próxima página
+        </Button>
       </div>
     </Box>
   );
