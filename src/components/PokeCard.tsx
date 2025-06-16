@@ -1,12 +1,15 @@
 import { Box, IconButton } from '@mui/material';
 import { getPokemonImage } from '../utils/getPokemonImage';
 import { Favorite, OpenInNew } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 interface PokeCardProps {
   name: string;
   image: string;
 }
 function PokeCard({ name, image }: PokeCardProps) {
+  const navigate = useNavigate();
+
   return (
     <Box
       component='div'
@@ -19,7 +22,7 @@ function PokeCard({ name, image }: PokeCardProps) {
         <IconButton>
           <Favorite color='warning' />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => navigate(`/pokemon/${name}`)}>
           <OpenInNew color='warning' />
         </IconButton>
       </div>

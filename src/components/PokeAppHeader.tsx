@@ -1,8 +1,9 @@
-import { Box, Button, IconButton, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import logo from '../assets/LogoPokeApp.png';
-import { Favorite } from '@mui/icons-material';
+import { usePokemons } from '../contexts/usePokemons';
 
 function PokeAppHeader() {
+  const { filterPokemons } = usePokemons();
   return (
     <Box
       component={'div'}
@@ -29,6 +30,7 @@ function PokeAppHeader() {
               id='pesquisar-pokemon'
               variant='outlined'
               placeholder='ex: ditto'
+              onChange={(e) => filterPokemons(e.target.value)}
               className='w-full'
             />
           </div>
