@@ -32,7 +32,10 @@ function PokeCard({ pokemon }: PokeCardProps) {
         <h1 className='text-xl font-bold'>{name.toUpperCase()}</h1>
 
         <IconButton onClick={toggleFavorite}>
-          <Favorite color='warning' />
+          <Favorite
+            className={isFavorite(name) ? 'border border-amber-300' : ''}
+            color={isFavorite(name) ? 'success' : 'warning'}
+          />
         </IconButton>
         <IconButton onClick={() => navigate(`/pokemon/${name}`)}>
           <OpenInNew color='warning' />
