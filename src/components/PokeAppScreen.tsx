@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchPokemons } from '../services/pokeApi';
+import PokeAppHeader from './PokeAppHeader';
 
 function PokeAppScreen() {
   const [pokemons, setPokemons] = useState([]);
@@ -11,17 +12,11 @@ function PokeAppScreen() {
       .catch(setError);
   }, []);
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  if (!pokemons) {
-    return <p>Carregando...</p>;
-  }
-
   return (
     <>
-      <h1>Pokémon</h1>
+      <PokeAppHeader />
+      {/* <PokeAppGallery /> */}
+      {/* <PokeAppFooter /> */}
     </>
   );
 }
