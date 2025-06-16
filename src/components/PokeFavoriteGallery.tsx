@@ -2,13 +2,10 @@ import { Box } from '@mui/material';
 import React from 'react';
 import type { Pokemon } from '../services/pokeApi';
 import PokeCard from './PokeCard';
+import { useFavorites } from '../contexts/useFavourites';
 
-interface PokeFavoriteGalleryProps {
-  favorites: Pokemon[];
-}
-
-function PokeFavoriteGallery(props: PokeFavoriteGalleryProps) {
-  const { favorites } = props;
+function PokeFavoriteGallery() {
+  const { favorites } = useFavorites();
   return (
     <Box
       component='div'

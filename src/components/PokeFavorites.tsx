@@ -6,7 +6,6 @@ import PokeCard from './PokeCard';
 import PokeFavoriteGallery from './PokeFavoriteGallery';
 
 function PokeFavorites() {
-  const { favorites } = useFavorites();
   return (
     <>
       <Box
@@ -23,7 +22,7 @@ function PokeFavorites() {
             Favoritos
           </h1>
         </Box>
-        <PokeFavoriteGallery favorites={favorites} />
+        <PokeFavoriteGallery />
       </Box>
     </>
   );
