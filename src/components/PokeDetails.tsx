@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchPokemon, type Pokemon } from '../services/pokeApi';
+import { fetchPokemon } from '../services/pokeApi';
 import { Box, IconButton } from '@mui/material';
 import { KeyboardReturn } from '@mui/icons-material';
 

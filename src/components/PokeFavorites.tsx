@@ -1,8 +1,6 @@
 import { Box } from '@mui/material';
 
 import logo from '../assets/LogoPokeApp.png';
-import { useFavorites } from '../contexts/useFavourites';
-import PokeCard from './PokeCard';
 import PokeFavoriteGallery from './PokeFavoriteGallery';
 
 function PokeFavorites() {

@@ -1,7 +1,6 @@
 import { Box, Button } from '@mui/material';
 import PokeCard from './PokeCard';
 import { usePokemons } from '../contexts/usePokemons';
-import { getPokemonImage } from '../utils/getPokemonImage';
 import { CircleLoader } from 'react-spinners';
 
 function PokeAppGallery() {

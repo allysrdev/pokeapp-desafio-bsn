@@ -1,6 +1,6 @@
 import { Favorite, Home } from '@mui/icons-material';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function PokeAppFooter() {
@@ -11,7 +11,7 @@ function PokeAppFooter() {
       <BottomNavigation
         showLabels
         value={value}
-        onChange={(event, newValue) => {
+        onChange={(_event, newValue) => {
           setValue(newValue);
         }}
         sx={{

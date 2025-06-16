@@ -1,6 +1,4 @@
 import { Box } from '@mui/material';
-import React from 'react';
-import type { Pokemon } from '../services/pokeApi';
 import PokeCard from './PokeCard';
 import { useFavorites } from '../contexts/useFavourites';
 
