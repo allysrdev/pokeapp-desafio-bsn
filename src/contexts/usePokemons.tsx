@@ -15,6 +15,9 @@ export const PokemonContext = createContext({
   loadingPokemons: true as boolean,
   filterPokemons: (() => {}) as (name: string) => void,
   filteredPokemons: null as Pokemon[] | null,
+  nextPage: () => {},
+  prevPage: () => {},
+  currentPage: 0 as number,
 });
 
 export function PokemonProvider({ children }: { children: React.ReactNode }) {
@@ -24,9 +27,11 @@ export function PokemonProvider({ children }: { children: React.ReactNode }) {
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[] | null>(
     pokemons
   );
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const LIMIT = 30;
 
   useEffect(() => {
-    fetchPokemons()
+    fetchPokemons(LIMIT, currentPage * LIMIT)
       .then((pokemons) => {
         setPokemons(pokemons);
       })
@@ -36,11 +41,11 @@ export function PokemonProvider({ children }: { children: React.ReactNode }) {
       .finally(() => {
         setLoadingPokemons(false);
       });
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     setFilteredPokemons(pokemons);
-  }, [pokemons]);
+  }, [pokemons, currentPage]);
 
   function filterPokemons(name: string) {
     if (!pokemons) {
@@ -52,6 +57,13 @@ export function PokemonProvider({ children }: { children: React.ReactNode }) {
     setFilteredPokemons(filtered);
   }
 
+  function nextPage() {
+    setCurrentPage((prevPage) => prevPage + 1);
+  }
+  function prevPage() {
+    setCurrentPage((prevPage) => (prevPage > 0 ? prevPage - 1 : 0));
+  }
+
   return (
     <PokemonContext.Provider
       value={{
@@ -61,6 +73,9 @@ export function PokemonProvider({ children }: { children: React.ReactNode }) {
         loadingPokemons,
         filteredPokemons,
         filterPokemons,
+        nextPage,
+        prevPage,
+        currentPage,
       }}
     >
       {children}

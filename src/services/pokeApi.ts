@@ -3,9 +3,12 @@ export interface Pokemon {
   url: string;
 }
 
-export async function fetchPokemons(): Promise<Pokemon[]> {
+export async function fetchPokemons(
+  limit = 30,
+  offset = 0
+): Promise<Pokemon[]> {
   const res = await fetch(
-    'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
   );
 
   if (!res.ok) {
