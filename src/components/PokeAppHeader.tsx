@@ -1,5 +1,6 @@
-import { Box, TextField } from '@mui/material';
+import { Box, Button, IconButton, TextField } from '@mui/material';
 import logo from '../assets/LogoPokeApp.png';
+import { Favorite } from '@mui/icons-material';
 
 function PokeAppHeader() {
   return (
@@ -19,14 +20,18 @@ function PokeAppHeader() {
       </Box>
 
       <form className='flex flex-col items-center justify-center gap-2 w-80 sm:w-96'>
-        <div>
-          <label htmlFor='pesquisar-pokemon'>Digite o nome de um pokemon</label>
-          <TextField
-            id='pesquisar-pokemon'
-            variant='outlined'
-            placeholder='ex: ditto'
-            className='w-full'
-          />
+        <div className='flex'>
+          <div>
+            <label htmlFor='pesquisar-pokemon'>
+              Digite o nome de um pokemon
+            </label>
+            <TextField
+              id='pesquisar-pokemon'
+              variant='outlined'
+              placeholder='ex: ditto'
+              className='w-full'
+            />
+          </div>
         </div>
       </form>
     </Box>
