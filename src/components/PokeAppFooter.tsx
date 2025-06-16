@@ -1,9 +1,11 @@
 import { Favorite, Home } from '@mui/icons-material';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function PokeAppFooter() {
   const [value, setValue] = useState(0);
+  const navigate = useNavigate();
   return (
     <footer className='fixed bottom-0 w-full'>
       <BottomNavigation
@@ -16,8 +18,16 @@ function PokeAppFooter() {
           background: '#dedee1',
         }}
       >
-        <BottomNavigationAction label='Home' icon={<Home />} />
-        <BottomNavigationAction label='Favorites' icon={<Favorite />} />
+        <BottomNavigationAction
+          onClick={() => navigate('/')}
+          label='Home'
+          icon={<Home />}
+        />
+        <BottomNavigationAction
+          onClick={() => navigate('/favorites')}
+          label='Favorites'
+          icon={<Favorite />}
+        />
       </BottomNavigation>
     </footer>
   );
