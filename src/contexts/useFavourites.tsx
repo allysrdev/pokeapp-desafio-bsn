@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { fetchPokemons, type Pokemon } from '../services/pokeApi';
+import { type Pokemon } from '../services/pokeApi';
 
 export const FavoriteContext = createContext({
   favorites: [] as Pokemon[],
-  addFavorite: (pokemon: Pokemon) => {},
-  removeFavorite: (pokemon: Pokemon) => {},
-  isFavorite: (pokeName: string) => false as boolean,
+  addFavorite: (_pokemon: Pokemon) => {},
+  removeFavorite: (_pokemon: Pokemon) => {},
+  isFavorite: (_pokeName: string) => false as boolean,
 });
 
 export function FavoriteProvider({ children }: { children: React.ReactNode }) {
