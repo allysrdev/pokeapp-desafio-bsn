@@ -20,8 +20,8 @@ function PokeFavorites() {
             Favoritos
           </h1>
         </Box>
-        <PokeFavoriteGallery />
       </Box>
+      <PokeFavoriteGallery />
     </>
   );
 }
