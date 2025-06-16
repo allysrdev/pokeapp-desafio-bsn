@@ -13,8 +13,6 @@ export const PokemonContext = createContext({
   setPokemons: (() => {}) as Dispatch<SetStateAction<Pokemon[] | null>>,
   pokeError: null as string | null,
   loadingPokemons: true as boolean,
-  filterPokemons: (() => {}) as (name: string) => void,
-  filteredPokemons: null as Pokemon[] | null,
   nextPage: () => {},
   prevPage: () => {},
   currentPage: 0 as number,
@@ -24,11 +22,8 @@ export function PokemonProvider({ children }: { children: React.ReactNode }) {
   const [pokemons, setPokemons] = useState<Pokemon[] | null>(null);
   const [pokeError, setPokeError] = useState<string | null>(null);
   const [loadingPokemons, setLoadingPokemons] = useState<boolean>(true);
-  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[] | null>(
-    pokemons
-  );
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const LIMIT = 30;
+  const LIMIT = 20;
 
   useEffect(() => {
     fetchPokemons(LIMIT, currentPage * LIMIT)
@@ -42,20 +37,6 @@ export function PokemonProvider({ children }: { children: React.ReactNode }) {
         setLoadingPokemons(false);
       });
   }, [currentPage]);
-
-  useEffect(() => {
-    setFilteredPokemons(pokemons);
-  }, [pokemons, currentPage]);
-
-  function filterPokemons(name: string) {
-    if (!pokemons) {
-      return;
-    }
-    const filtered = pokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(name.toLowerCase())
-    );
-    setFilteredPokemons(filtered);
-  }
 
   function nextPage() {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -71,8 +52,6 @@ export function PokemonProvider({ children }: { children: React.ReactNode }) {
         setPokemons,
         pokeError,
         loadingPokemons,
-        filteredPokemons,
-        filterPokemons,
         nextPage,
         prevPage,
         currentPage,

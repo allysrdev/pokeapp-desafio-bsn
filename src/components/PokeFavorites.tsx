@@ -24,14 +24,12 @@ function PokeFavorites() {
         </Box>
       </Box>
       <Box component='div' className='p-8 flex flex-wrap justify-center gap-4'>
-        {favorites ? (
-          favorites?.map((favorite) => (
-            <PokeCard key={favorite.name} pokemon={favorite} />
+        {favorites.length > 0 ? (
+          favorites.map((pokemon) => (
+            <PokeCard key={pokemon.name} pokemon={pokemon} />
           ))
         ) : (
-          <h1 className='text-5xl sm:text-6xl text-shadow-2xs font-bold text-zinc-700'>
-            Favoritos
-          </h1>
+          <p>Ainda não há pokemons favoritos</p>
         )}
       </Box>
     </>

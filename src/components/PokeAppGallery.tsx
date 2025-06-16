@@ -8,7 +8,7 @@ function PokeAppGallery() {
   const {
     pokeError,
     loadingPokemons,
-    filteredPokemons,
+    pokemons,
     nextPage,
     prevPage,
     currentPage,
@@ -25,14 +25,15 @@ function PokeAppGallery() {
     );
   }
   return (
-    <Box
-      component='div'
-      className='p-8 pb-32 flex flex-wrap justify-center gap-4'
-    >
-      {filteredPokemons?.map((pokemon) => (
-        <PokeCard key={pokemon.name} pokemon={pokemon} />
-      ))}
-
+    <Box component='div' className='pb-32'>
+      <Box
+        component='div'
+        className='p-8 w-[80%] mx-auto flex flex-wrap justify-center gap-4'
+      >
+        {pokemons?.map((pokemon) => (
+          <PokeCard key={pokemon.name} pokemon={pokemon} />
+        ))}
+      </Box>
       <div className='flex gap-4 mt-4 items-center justify-center'>
         <Button onClick={prevPage}>Página anterior</Button>
         <span>{currentPage + 1}</span>

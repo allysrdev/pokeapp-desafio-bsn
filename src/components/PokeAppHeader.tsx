@@ -1,9 +1,7 @@
 import { Box, TextField } from '@mui/material';
 import logo from '../assets/LogoPokeApp.png';
-import { usePokemons } from '../contexts/usePokemons';
 
 function PokeAppHeader() {
-  const { filterPokemons } = usePokemons();
   return (
     <Box
       component={'div'}
@@ -19,23 +17,6 @@ function PokeAppHeader() {
           PokeApp
         </h1>
       </Box>
-
-      <form className='flex flex-col items-center justify-center gap-2 w-80 sm:w-96'>
-        <div className='flex'>
-          <div>
-            <label htmlFor='pesquisar-pokemon'>
-              Digite o nome de um pokemon
-            </label>
-            <TextField
-              id='pesquisar-pokemon'
-              variant='outlined'
-              placeholder='ex: ditto'
-              onChange={(e) => filterPokemons(e.target.value)}
-              className='w-full'
-            />
-          </div>
-        </div>
-      </form>
     </Box>
   );
 }
